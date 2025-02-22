@@ -9,7 +9,7 @@ public class CalculatorUI {
         calc = new Calculator();
     }
 
-    public void displayExpression(){
+    public void displayExpression(){    
         System.out.print("\033[H\033[2J");  
         System.out.flush();     
         System.out.println(" _______________________________________________________________________");
