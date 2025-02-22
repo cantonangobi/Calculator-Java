@@ -3,9 +3,6 @@
  */
 package calculator;
 
-import java.util.Scanner;
-
-import main.java.calculator.Calculator;
 
 public class App {
     public String getGreeting() {
@@ -16,26 +13,8 @@ public class App {
         System.out.println(new App().getGreeting());
         
         
-
-        // String test = "+";
-        // System.out.println(test);
-        // System.out.println(test == "+");
-
-        // String test2 = new Scanner(System.in).next();
-        // System.out.println(test);
-        // System.out.println(test2.equals("+"));
-
-        Calculator calc = new Calculator();
+        CalculatorUI calc = new CalculatorUI();
         calc.runAppUI();
-        
-        // float a = 5.7f;
-        // float b = 0.4f;
-        // System.out.println(a + b);
-        // float c = new Scanner(System.in).nextFloat();
-        // System.out.println(c);
-        // float d = new Scanner(System.in).nextFloat();
-        // System.out.println(d);
-        // System.out.println(c+d);
         
 
     }

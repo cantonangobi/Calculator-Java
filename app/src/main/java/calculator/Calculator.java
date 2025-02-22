@@ -1,52 +1,65 @@
-package main.java.calculator;
-
-import java.util.Scanner;
+package calculator;
 
 public class Calculator {
+
     private double num1, num2, answer;
     public String operator, expression;
+
+
 
     public Calculator(){
         num1 = 0;
         num2 = 0;
         answer = 0;
-        expression = "Expression:\t";
+        expression = "";
     }
-    public void displayExpression(){
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();     
-        System.out.println(" _______________________________________________________________________");
-        System.out.println("|                                                                       |");
-        System.out.println("|                             Calculator                                |");
-        System.out.println("|_______________________________________________________________________|");
-        System.out.println("|                                                                       |");
-        System.out.println("| " + expression);
-        System.out.println("|_______________________________________________________________________|");
+
+    public double getNum1() {
+        return num1;
     }
-    public double getNumInput(){
-        double num = 0;
-        while (true){
-            try{
-                System.out.print("Enter a number: ");
-                num = new Scanner(System.in).nextDouble();
-            }
-            catch (Exception e){
-                displayExpression();
-                System.out.println("Invalid Input! Please try again");
-                continue;
-            }
-            break;
-        }
-        
-        return num;
-        
+
+    public void setNum1(double num1) {
+        this.num1 = num1;
     }
-    public void getOperatorInput(){
-        System.out.print("The operations are as follows: +, -, x, /\n" + //
-                        "Please choose an operation: ");
-        operator = new Scanner(System.in).next();
+
+    public double getNum2() {
+        return num2;
     }
-    public boolean calculate(){
+
+    public void setNum2(double num2) {
+        this.num2 = num2;
+    }
+
+    public String getExpression() {
+        return expression;
+    }
+
+    public void setExpression(String expression) {
+        this.expression = expression;
+    }
+
+    public double getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(double answer) {
+        this.answer = answer;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
+
+    public void reset(){
+        num1 = 0;
+        num2 = 0;
+        answer = 0;
+        expression = "";
+        operator = "";
+    }
+
+    public void calculate(){
         if (operator.equals("+")) {
             answer = num1 + num2;
         }
@@ -59,40 +72,15 @@ public class Calculator {
         else if (operator.equals("/")) {
             answer = num1 / num2;
         }
-        else {
-            //System.out.println("Invalid Operator!");
-            return false;
-        }
-        return true;
     }
+
     public String formatDouble(double num){
         if ((num*10) % 10 == 0){
             return String.format("%.0f",num);
-        } 
+        }
         return String.valueOf(num);
     }
 
-    public void runAppUI(){
-        displayExpression();
-
-        num1 = getNumInput();
-        expression = expression + formatDouble(num1);
-        displayExpression();
-
-        getOperatorInput();
-        expression = expression + " " + operator + " ";
-        displayExpression();
-
-        num2 = getNumInput();
-        if(calculate()){
-            expression = expression + formatDouble(num2) + " = " + formatDouble(answer);
-        }
-        else{
-            expression = "Invalid Expression!";
-        }
-        
-        displayExpression();
 
 
-    }
 }
